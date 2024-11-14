@@ -1,1 +1,7 @@
+Until Kai asks you what it does and you both end up googling it - Kai 11/13/2024
+
+Life hack: if you're not sure what a file does, just tell Kai 'that file's not important' - hailey 11/13/24
+
+Does this feel sketchy? It felt sketchy to me... (Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass) - Kai 11/13/2024
+
 Why is initializing such a pain? - Kai 11/10/2024
