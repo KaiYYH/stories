@@ -38,8 +38,8 @@ export default function StoryGrid() {
         <div className="grid grid-cols-4 gap-4">
             {storyNames.map((item) => (
                 <StoryBox 
-                    storyName={item.name}
-                    storyDescription={item.description}
+                    name={item.name}
+                    description={item.description}
                     postCount={item.postCount} 
                     lastPost={item.lastPost}                
                 />
