@@ -24,12 +24,18 @@ export default function StoryGrid() {
             name: 'Title 4',
             description: 'Description 4',
             postCount: 15,
-            lastPost: new Date("06/30/2016"),
+            lastPost: new Date("06/30/16"),
+        },
+        {
+            name: 'Title 5',
+            description: 'Description 5',
+            postCount: 24,
+            lastPost: new Date("11/29/2024"),
         }
     ];
 
     return(
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-4 gap-4">
             {storyNames.map((item) => (
                 <StoryBox 
                     storyName={item.name}
