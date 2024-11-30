@@ -1,4 +1,4 @@
-import StoryGrid from "./components/StoryGrid";
+/* import StoryGrid from "./components/StoryGrid";
 
 export default function Home() {
   return (
@@ -22,5 +22,36 @@ export default function Home() {
         <StoryGrid />
       </main>
     </div>
+  );
+} */
+
+"use client"
+
+import { useState } from "react";
+import { Modal } from "./components/CreateStoryModal";
+
+export default function Home() {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  return ( 
+    <>
+
+      <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors" 
+      onClick={() => {
+        setIsModalOpen(true);
+        }}
+      >
+        Open Modal
+      </button>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+        }}
+      >
+        <p>Here is a modal</p>
+      </Modal>
+    </>
   );
 }
