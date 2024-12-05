@@ -25,8 +25,8 @@ export const Modal = (
     return (
         <>
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center transition-opacity duration-300">
-            <div className="bg-white p-5 rounded-md shadow.lg max-w-sm md:ax-w-md mx-auto transition-transform duration-300 transform-gpu">
-                <button onClick={onClose}>Close</button>
+            <div className="bg-foreground text-background p-5 rounded-md shadow.lg max-w-sm md:ax-w-md mx-auto transition-transform duration-300 transform-gpu">
+                <button onClick={onClose} className="float-right hover:text-[#383838] dark:hover:text-[#7a7a7a]">X Close</button>
                 {children}
             </div>
         </div>
