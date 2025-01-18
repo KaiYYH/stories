@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react";
-import { Modal } from "./components/CreateStoryModal";
+import { Modal } from "./components/Modal";
 import StoryGrid from "./components/StoryGrid";
 
 export default function Home() {
@@ -33,9 +33,9 @@ export default function Home() {
                 <div>
                   <form>
                     <div className="grid grid-cols-[25%_72%] gap-3">
-                      <div className=""><label />Name: </div>
+                      <div className=""><label>Name: </label></div>
                       <div className=""><input type="text" className=" float-right bg-[#ccc] rounded-md w-64 p-1" /></div>
-                      <div className=""><label />Description: </div>
+                      <div className=""><label>Description: </label></div>
                       <div className=""><textarea className="bg-[#ccc] rounded-md w-64 float-right p-1" /></div>
                       <div className=""></div>
                       <div className=""><input type="submit" className="cursor-pointer float-right text-foreground hover:text-[#383838] dark:hover:text-[#7a7a7a] bg-background rounded-md p-2"/></div>
