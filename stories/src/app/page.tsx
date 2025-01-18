@@ -32,11 +32,15 @@ export default function Home() {
               >
                 <div>
                   <form>
-                    <label>Name: 
-                    <input type="text" className="bg-[#ccc] rounded-md" /></label>
-                    <label>Description: 
-                    <textarea className="bg-[#ccc] rounded-md" /></label>
-                    <input type="submit" className="float-right hover:text-[#383838] dark:hover:text-[#7a7a7a]"/>
+                    <div className="grid grid-cols-[25%_72%] gap-3">
+                      <div className=""><label />Name: </div>
+                      <div className=""><input type="text" className=" float-right bg-[#ccc] rounded-md w-64 p-1" /></div>
+                      <div className=""><label />Description: </div>
+                      <div className=""><textarea className="bg-[#ccc] rounded-md w-64 float-right p-1" /></div>
+                      <div className=""></div>
+                      <div className=""><input type="submit" className="cursor-pointer float-right text-foreground hover:text-[#383838] dark:hover:text-[#7a7a7a] bg-background rounded-md p-2"/></div>
+                    </div>
+                    
                   </form>
                 </div>
               </Modal>
