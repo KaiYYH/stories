@@ -6,8 +6,6 @@ interface Props {
 }
 
 export default function StoryBox(props: Props) {
-    console.log(typeof(props.lastPost))
-    console.log(props.lastPost?.toDateString())
     return (
         <div className="border-solid border border-foreground p-3">
             <h1 className="text-lg">{props.name}</h1>
