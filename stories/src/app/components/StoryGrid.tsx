@@ -18,8 +18,6 @@ export default function StoryGrid() {
             .then((response) => response.json())
             .then(data => {
                 setStories(data);
-                console.log(data);
-                console.log(stories)
             })
             .catch(error => console.log(error));
         }
