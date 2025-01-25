@@ -1,43 +1,27 @@
-import { useState } from "react";
 import { Modal } from "./Modal";
 
-export default function CreateStoryModal() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+interface Props {
+    isModalOpen: boolean,
+    onClose: () => void,
+    onSubmit: (name: string, description: string) => void,
+}
 
-    function handleSubmit() {
-        console.log("Story Created!")
-    
-        let nameOfStory = document.getElementById("Name")
-    
-        console.log(nameOfStory)
-    
-        if (nameOfStory) {
-          console.log(nameOfStory.innerHTML)
+export default function CreateStoryModal(props: Props) {
+    function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
+        event.preventDefault()
+        const form = event.currentTarget
+        const formElements = form.elements as typeof form.elements & {
+            nameInput: {value: string}
+            descriptionInput: {value: string}
         }
-    
-        /* // POST request using fetch()
-        fetch("https://localhost:7009/api/Stories", {
-          method: "POST",
-          
-          // Adding body or contents to send
-          body: JSON.stringify({
-              title: "foo",
-              body: "bar",
-              userId: 1
-          }),
-        })
-        // Converting to JSON
-        .then(response => response.json())
-    
-        // Displaying results to console
-        .then(json => console.log(json)); */
+
+        props.onSubmit(formElements.nameInput.value, formElements.descriptionInput.value)
+    }
 
     return(
         <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-            setIsModalOpen(false);
-        }}
+        isOpen={props.isModalOpen}
+        onClose={props.onClose}
         >
     <div>
         <form onSubmit={handleSubmit}>
@@ -52,5 +36,5 @@ export default function CreateStoryModal() {
         </form>
     </div>
     </Modal>
-    )}
+    )
 }
