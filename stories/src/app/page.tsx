@@ -34,7 +34,6 @@ export default function Home() {
         }),
     })
     .then(response => response.json())
-    .then(json => console.log(json))
     .catch(e => {console.log(e)});
 
     setIsModalOpen(false)
@@ -59,11 +58,11 @@ export default function Home() {
               </button>
 
               <CreateStoryModal 
-              isModalOpen={isModalOpen}
-              onClose={() => {
-                setIsModalOpen(false);
-              }}
-              onSubmit={onSubmit}
+                isModalOpen={isModalOpen}
+                onClose={() => {
+                  setIsModalOpen(false);
+                }}
+                onSubmit={onSubmit}
               />
             </div>
         </div>

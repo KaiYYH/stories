@@ -20,8 +20,8 @@ export default function CreateStoryModal(props: Props) {
 
     return(
         <Modal
-        isOpen={props.isModalOpen}
-        onClose={props.onClose}
+            isOpen={props.isModalOpen}
+            onClose={props.onClose}
         >
     <div>
         <form onSubmit={handleSubmit}>
