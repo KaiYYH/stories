@@ -6,7 +6,6 @@ interface Props {
 }
 
 export default function StoryGrid(props: Props) {
-    
     return(
         <div className="grid grid-cols-4 gap-4">
             {props.stories.map((item) => (
