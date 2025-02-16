@@ -24,7 +24,7 @@ export default function NavBar() {
                 <span className="text-5xl pl-3 text-foreground">STORIES</span>
             </a>
         </div>
-        <div className="grid grid-cols-3 justify-items-center items-center text-foreground hover:text-[#383838] dark:hover:text-[#7a7a7a]">
+        <div className="grid grid-cols-3 justify-items-center items-center">
             {items.map((item) => (
                 <NavBarLink
                     page={item.page}
