@@ -16,7 +16,7 @@ export default function StoryBox(props: Props) {
             </div>
             <div className="row-span-2">
                 <p className="text-gray-400 text-sm">Post Count: {props.postCount}</p>
-                {props.lastPost && (<p className="text-gray-400 text-sm">Last Post: {props.lastPost.toDateString()}</p>)}
+                <p className="text-gray-400 text-sm">Last Post: {props.lastPost?.toDateString() ?? "No posts yet!"}</p>
             </div>
         </div>
     )
