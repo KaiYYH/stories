@@ -8,10 +8,6 @@ export default function NavBar() {
           path: "/",
         },
         {
-          page: "List",
-          path: "/pages/list",
-        },
-        {
           page: "Story",
           path: "/pages/story",
         },
@@ -27,7 +23,7 @@ export default function NavBar() {
         <div className="grid grid-cols-3 justify-items-center items-center">
             {items.map((item) => (
                 <NavBarLink
-                    page={item.page}
+                    pageName={item.page}
                     path={item.path}
                 />
             ))}
