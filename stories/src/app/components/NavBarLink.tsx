@@ -7,7 +7,7 @@ interface Props {
 
 export default function NavBarLink(props: Props) {
     return (
-        <div className="border border-gray-500 text-foreground hover:text-[#383838] dark:hover:text-[#7a7a7a]">
+        <div className="text-foreground hover:text-[#383838] dark:hover:text-[#7a7a7a]">
             <Link href={props.path}>{props.pageName}</Link>
         </div>
     )
