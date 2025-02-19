@@ -3,3 +3,5 @@ making new local branch: checkout main, pull main, checkout -b
 pushing to branch for pull request: status, add ., commit -m, pull main (and fix any conflicts), commit -m, push origin [branch name]
 
 manual git ignore: git checkout origin/main [file path]
+
+pulling from github to local branch: git fetch origin [branch name]
