@@ -23,7 +23,6 @@ export default function DisplayStory(props: Props) {
             .catch(error => console.log(error));
         }
         getPosts();
-        console.log(posts);
       }, [numPosts]);
 
     function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
