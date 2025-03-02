@@ -1,3 +1,5 @@
+"use client"
+
 import DisplayStory from "../../components/DisplayStory";
 
 export default function Story() {

@@ -5,6 +5,9 @@ interface Props {
 }
 
 export default function StoryPost(props: Props) {
+    console.log(props.content);
+    console.log(props.date);
+    console.log(props.date.toDateString());
     return(
         <div className="border-solid border p-5">
             <h2><b>{props.author}</b></h2>
