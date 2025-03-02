@@ -33,7 +33,6 @@ export default function DisplayStory(props: Props) {
             author: {value:string}
         }
         createPost(formElements.content.value, formElements.author.value);
-
     }
 
     async function createPost(content: string, author: string) {
