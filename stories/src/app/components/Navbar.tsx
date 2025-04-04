@@ -13,7 +13,7 @@ export default function NavBar() {
         },
         {
           page: "My Stories",
-          path: "/myStories",
+          path: "/my-stories",
         },
         {
           page: "Login",
