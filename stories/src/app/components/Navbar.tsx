@@ -11,6 +11,14 @@ export default function NavBar() {
           page: "Story",
           path: "/pages/story",
         },
+        {
+          page: "My Stories",
+          path: "/my-stories",
+        },
+        {
+          page: "Login",
+          path: "/login",
+        },
       ];
 
   return (
