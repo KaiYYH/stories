@@ -26,6 +26,7 @@ export default function NavBar() {
                 <NavBarLink
                     pageName={item.page}
                     path={item.path}
+                    key={item.page}
                 />
             ))}
         </div>

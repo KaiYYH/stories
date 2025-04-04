@@ -10,17 +10,17 @@ export default function Home() {
   const [stories, setStories] = useState<Story[]>([]);
   const [numStory, setNumStory] = useState(0);
   
-      useEffect(() => {
-          const getStories = async () => {
-              await fetch('https://localhost:7009/api/Stories')
-              .then((response) => response.json())
-              .then(data => {
-                  setStories(data);
-              })
-              .catch(error => console.log(error));
-          }
-          getStories()
-      }, [numStory]);
+  useEffect(() => {
+      const getStories = async () => {
+          await fetch('https://localhost:7009/api/Stories')
+          .then((response) => response.json())
+          .then(data => {
+              setStories(data);
+          })
+          .catch(error => console.log(error));
+      }
+      getStories()
+  }, [numStory]);
 
   async function onSubmit(name: string, description: string) {
     await fetch("https://localhost:7009/api/Stories", {
