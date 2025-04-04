@@ -4,7 +4,7 @@ export default function NavBar() {
 
     const items = [
         {
-          page: "Story Grid",
+          page: "Home",
           path: "/",
         },
         {
