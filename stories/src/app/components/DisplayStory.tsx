@@ -1,3 +1,6 @@
+'use client'
+ 
+import { useSearchParams } from 'next/navigation'
 import { useEffect } from "react";
 import StoryPost from "./StoryPost";
 import { useState } from "react";
@@ -11,7 +14,9 @@ interface Props {
 export default function DisplayStory(props: Props) {
     const [posts, setPosts] = useState<Post[]>([]);
     const [numPosts, setNumPosts] = useState(0);
-    const storyId = 1;
+
+    const searchParams = useSearchParams()
+    const storyId = searchParams.get('id')
     
     useEffect(() => {
         const getPosts = async () => {

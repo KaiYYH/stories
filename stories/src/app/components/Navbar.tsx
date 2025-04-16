@@ -9,7 +9,7 @@ export default function NavBar() {
         },
         {
           page: "Story",
-          path: "/pages/story",
+          path: "/pages/story?id=1",
         },
         {
           page: "My Stories",
