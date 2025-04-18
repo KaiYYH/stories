@@ -10,6 +10,7 @@ export default function StoryGrid(props: Props) {
         <div className="grid grid-cols-4 gap-4">
             {props.stories.map((item) => (
                 <StoryBox 
+                    key={item.storyId}
                     storyId={item.storyId}
                     name={item.name}
                     description={item.description}
