@@ -11,6 +11,7 @@ export default function StoryGrid(props: Props) {
             {props.stories.map((item) => (
                 <StoryBox 
                     key={item.storyId}
+                    storyId={item.storyId}
                     name={item.name}
                     description={item.description}
                     postCount={item.postCount} 
