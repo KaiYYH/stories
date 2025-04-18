@@ -9,11 +9,11 @@ export default function StoryPage() {
 
   const [story, setStory] = useState<Story>();
   const searchParams = useSearchParams()
-  const storyId = searchParams.get('id')
+  const key = searchParams.get('id')
   
   useEffect(() => {
     const getStory = async () => {
-        await fetch(`https://localhost:7009/api/Stories/${storyId}`)
+        await fetch(`https://localhost:7009/api/Stories/${key}`)
         .then((response) => response.json())
         .then(data => {
         setStory(data);
@@ -31,6 +31,7 @@ export default function StoryPage() {
             <DisplayStory 
             name={story!.name}
             description={story?.description}
+            storyId={story!.storyId}
             />
           )}
           

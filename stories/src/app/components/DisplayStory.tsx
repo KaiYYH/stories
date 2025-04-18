@@ -8,19 +8,20 @@ import { Post } from "../models/Post";
 
 interface Props {
     name: string,
-    description: string
+    description: string,
+    storyId: number
 }
 
 export default function DisplayStory(props: Props) {
     const [posts, setPosts] = useState<Post[]>([]);
     const [numPosts, setNumPosts] = useState(0);
 
-    const searchParams = useSearchParams()
-    const storyId = searchParams.get('id')
+    /* const searchParams = useSearchParams()
+    const storyId = searchParams.get('id') */
     
     useEffect(() => {
         const getPosts = async () => {
-            await fetch(`https://localhost:7009/api/Stories/${storyId}/Posts`)
+            await fetch(`https://localhost:7009/api/Stories/${props.storyId}/Posts`)
             .then((response) => response.json())
             .then(data => {
             setPosts(data);
@@ -51,7 +52,7 @@ export default function DisplayStory(props: Props) {
                 content: content,
                 author: author,
                 date: date,
-                storyId: storyId
+                storyId: props.storyId
             }),
         })
         .then(response => response.json())
