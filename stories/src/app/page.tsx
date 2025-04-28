@@ -58,8 +58,9 @@ export default function Home() {
               isModalOpen={isModalOpen}
               onClose={() => {
                 setIsModalOpen(false);
-              }}
-              onSubmit={onSubmit}
+              } }
+              onSubmit={onSubmit} 
+              modalTitle={"Create Story"}
             />
           </div>
         </div>
