@@ -1,10 +1,12 @@
 "use client"
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
 
     const router = useRouter();
+    const [errorMessage, setErrorMessage] = useState("");
 
     async function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -25,10 +27,16 @@ export default function Login() {
             }),
         })
         .then(response => {
-            response.json();
-            router.push('/');
+            if (response.ok) {
+                router.push('/');
+            }
+            else {
+                setErrorMessage("You are being problematic :/ Please try again later.")
+            }
         })
-        .catch(e => {console.log(e)});
+        .catch(e => {
+            console.log(e);
+        });
     }
 
     return (
@@ -48,6 +56,9 @@ export default function Login() {
                 </form>
               </div>
             </div>
+            {errorMessage && 
+                <div className="text-red-600 text-sm mt-2">{errorMessage}</div>
+            }
           </main>
         </div>
       );
