@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import CreateStoryModal from "./components/CreateStoryModal";
 import StoryGrid from "./components/StoryGrid";
 import { Story } from "./models/Story";
+import Button from "./components/Button";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,13 +47,12 @@ export default function Home() {
         <div className="items-center sm:flex-row">
           <div className="float-right inline-grid">
 
-            <button className="p-3 mb-5 rounded-full border border-solid border-transparent transition-colors bg-foreground text-background hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5" 
+            <Button
+              text="+ Create Story"
               onClick={() => {
                 setIsModalOpen(true);
               }}
-            >
-              + Create Story
-            </button>
+            />
 
             <CreateStoryModal 
               isModalOpen={isModalOpen}
