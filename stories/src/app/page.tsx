@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import CreateStoryModal from "./components/CreateStoryModal";
 import StoryGrid from "./components/StoryGrid";
 import { Story } from "./models/Story";
-import Button from "./components/Button";
+import Button from "./components/general/Button";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
