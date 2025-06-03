@@ -15,7 +15,7 @@ export default function StoryGrid(props: Props) {
                     name={item.name}
                     description={item.description}
                     postCount={item.postCount} 
-                    lastPost={item.lastPost ? new Date(item.lastPost) : undefined}                
+                    lastPost={item.lastPost ? new Date(item.lastPost) : undefined}
                 />
             ))}
         </div>

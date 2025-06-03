@@ -5,6 +5,9 @@ why :/
 sincerely,
 hailey 5/28/25
 
+If the problem is that I didn't return anything from the component, then why doesn't the error message just say that nothing was returned from the component? Instead of this nonsense about type "void" not being assignable to type ReactNode? - Kai 05/28/2025
+
+
 Surely I should be able to change the width of the modal... surely... SURELY!!! Well I can't find it... :/ - Kai 01/17/2025
 
 Until Kai asks you what it does and you both end up googling it - Kai 11/13/2024

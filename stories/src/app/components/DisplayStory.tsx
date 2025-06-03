@@ -1,10 +1,10 @@
 'use client'
- 
-import { useSearchParams } from 'next/navigation'
+
 import { useEffect } from "react";
 import StoryPost from "./StoryPost";
 import { useState } from "react";
 import { Post } from "../models/Post";
+import EditStoryModal from "./EditStoryModal";
 
 interface Props {
     name: string,
@@ -15,9 +15,6 @@ interface Props {
 export default function DisplayStory(props: Props) {
     const [posts, setPosts] = useState<Post[]>([]);
     const [numPosts, setNumPosts] = useState(0);
-
-    /* const searchParams = useSearchParams()
-    const storyId = searchParams.get('id') */
     
     useEffect(() => {
         const getPosts = async () => {
@@ -61,11 +58,62 @@ export default function DisplayStory(props: Props) {
         setNumPosts(numPosts + 1);
     }
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+
+    useEffect(() => {
+        const setDetails = () => {
+            setName(props.name);
+            setDescription(props.description)
+        }
+        setDetails();
+    }, [props.name, props.description])
+
+    async function onSubmit(name: string, description: string) {
+        await fetch(`https://localhost:7009/api/Stories/${props.storyId}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                Name: name,
+                Description: description,
+            }),
+        })
+        .then(() => {
+            setName(name);
+            setDescription(description);
+        })
+        .catch(e => {console.log(e)});
+    
+        setIsModalOpen(false)
+    }
+
     return(
         <div>
             <div>
-                <h1><b>{props.name}</b></h1>
-                <p>{props.description}</p>
+                <h1>
+                    <b>{name} </b>
+                    <button className="hover:text-[#707070] dark:hover:[#707070]" 
+                        onClick={() => {
+                            setIsModalOpen(true);
+                        }}
+                    >
+                        &#9998;
+                    </button>
+                    <EditStoryModal 
+                        isModalOpen={isModalOpen}
+                        onClose={() => {
+                            setIsModalOpen(false);
+                        }}
+                        onSubmit={onSubmit}
+                        name={name}
+                        description={description}
+                    /> 
+                </h1> 
+                <p>{description}</p>
             </div>
             <div className="grid grid-cols-1 gap-4 mt-5">
                 {posts && posts.map((item) => (
