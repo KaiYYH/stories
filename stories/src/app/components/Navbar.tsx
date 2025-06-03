@@ -19,6 +19,10 @@ export default function NavBar() {
           page: "Sign Up",
           path: "/pages/signup",
         },
+        {
+          page: "Log In",
+          path: "/pages/login"
+        }
       ];
 
   return (

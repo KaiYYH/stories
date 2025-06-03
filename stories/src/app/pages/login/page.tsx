@@ -1,9 +1,10 @@
 "use client"
 
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-export default function SignUp() {
+export default function LogIn() {
 
     const router = useRouter();
     const [errorMessage, setErrorMessage] = useState("");
@@ -16,27 +17,19 @@ export default function SignUp() {
             passwordInput: {value: string}
         }
 
-        await fetch("https://localhost:7009/api/Users", {
-            method: "POST",
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                Username: formElements.usernameInput.value,
-                Password: formElements.passwordInput.value,
-            }),
+        console.log("about to submit");
+        let res = await signIn("credentials", {
+            username: formElements.usernameInput.value,
+            password: formElements.passwordInput.value,
+            redirect: false
         })
-        .then(response => {
-            if (response.ok) {
-                router.push('/');
-            }
-            else {
-                setErrorMessage("You are being problematic :/ Please try again later.")
-            }
-        })
-        .catch(e => {
-            console.log(e);
-        });
+        
+        if (res.error) {
+          setErrorMessage("You moron. Try harder next time.");
+        }
+        else {
+          router.push('/');
+        }
     }
 
     return (
@@ -51,7 +44,7 @@ export default function SignUp() {
                         <div className=""><label>Password: </label></div>
                         <div className=""><input type="password" maxLength={45} id="passwordInput" className="float-right bg-gray-200 rounded-md w-64 p-1" /></div>
                         <div className=""></div>
-                        <div className=""><input type="submit" value="Submit" className="float-right p-3 rounded-full border border-solid border-transparent transition-colors bg-foreground text-background hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"/></div>
+                        <div className=""><input type="submit" value="Log In" className="float-right p-3 rounded-full border border-solid border-transparent transition-colors bg-foreground text-background hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"/></div>
                     </div>
                 </form>
               </div>
