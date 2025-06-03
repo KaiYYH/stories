@@ -16,9 +16,13 @@ export default function NavBar() {
           path: "/my-stories",
         },
         {
-          page: "Login",
-          path: "/login",
+          page: "Sign Up",
+          path: "/pages/signup",
         },
+        {
+          page: "Log In",
+          path: "/pages/login"
+        }
       ];
 
   return (
