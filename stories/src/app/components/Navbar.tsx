@@ -12,14 +12,6 @@ export default function NavBar() {
       {
         page: "Home",
         path: "/",
-      },
-      {
-        page: "Story",
-        path: "/pages/story?id=1",
-      },
-      {
-        page: "My Stories",
-        path: "/my-stories",
       }
   ];
 
@@ -31,6 +23,16 @@ export default function NavBar() {
     {
       page: "Log In",
       path: "/pages/login"
+    });
+  }
+  else {
+    items.push({
+      page: "Story",
+      path: "/pages/story?id=1",
+    },
+    {
+      page: "My Stories",
+      path: "/my-stories",
     });
   }
 
