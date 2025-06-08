@@ -1,4 +1,5 @@
 "use client"
+
 import NavBarLink from "./NavBarLink";
 import { useSession, signOut } from "next-auth/react";
 import Button from "./general/Button";
