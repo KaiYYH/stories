@@ -6,9 +6,11 @@
     "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "flowbite-react patch"
   },
   "dependencies": {
+    "flowbite-react": "^0.11.7",
     "next": "15.0.3",
     "next-auth": "^5.0.0-beta.28",
     "react": "19.0.0-rc-66855b96-20241106",

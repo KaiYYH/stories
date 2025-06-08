@@ -5,6 +5,7 @@ import StoryPost from "./StoryPost";
 import { useState } from "react";
 import { Post } from "../models/Post";
 import EditStoryModal from "./EditStoryModal";
+import { Tooltip } from "flowbite-react";
 
 interface Props {
     name: string,
@@ -94,15 +95,18 @@ export default function DisplayStory(props: Props) {
     return(
         <div>
             <div>
-                <h1>
-                    <b>{name} </b>
-                    <button className="hover:text-[#707070] dark:hover:[#707070]" 
-                        onClick={() => {
-                            setIsModalOpen(true);
-                        }}
-                    >
-                        &#9998;
-                    </button>
+                <div>
+                    <div className="inline-block"><b>{name} </b></div>
+                    <div className="inline-block"><Tooltip content="Edit Story" placement="right">
+                        <button className="hover:text-[#707070] dark:hover:[#707070]" 
+                            onClick={() => {
+                                setIsModalOpen(true);
+                            }}
+                        >
+                            &#9998;
+                        </button>
+                    </Tooltip></div>
+
                     <EditStoryModal 
                         isModalOpen={isModalOpen}
                         onClose={() => {
@@ -112,7 +116,7 @@ export default function DisplayStory(props: Props) {
                         name={name}
                         description={description}
                     /> 
-                </h1> 
+                </div> 
                 <p>{description}</p>
             </div>
             <div className="grid grid-cols-1 gap-4 mt-5">
