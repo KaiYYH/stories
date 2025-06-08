@@ -1,6 +1,6 @@
 interface Props {
     content: string,
-    author: string,
+    author: number,
     date: Date
 }
 

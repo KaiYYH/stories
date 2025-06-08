@@ -29,6 +29,8 @@ export default function DisplayStory(props: Props) {
         getPosts();
       }, [numPosts]);
 
+    // batch request by sending array to backend to get dictionary of usernames and then passing that into the storyposts
+
     function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
         event.preventDefault();
         const form = event.currentTarget
@@ -123,7 +125,7 @@ export default function DisplayStory(props: Props) {
                 {posts && posts.map((item) => (
                     <StoryPost
                         content={item.content}
-                        author={item.author}
+                        author={item.userId}
                         date={new Date(item.date)}
                         key={item.postId}
                     />

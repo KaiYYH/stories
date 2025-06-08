@@ -7,3 +7,5 @@ manual git ignore: git checkout origin/main [file path]
 pulling from github to local branch: git fetch origin [branch name]
 
 flowbite react tooltip docs: https://flowbite-react.com/docs/components/tooltip
+
+unstaging chances: git restore --staged <new file>
