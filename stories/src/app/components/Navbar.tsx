@@ -6,7 +6,6 @@ import Button from "./general/Button";
 
 export default function NavBar() {
   const { data: session } = useSession();
-  console.log(session);
 
   const items = [
       {
