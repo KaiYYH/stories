@@ -17,7 +17,6 @@ export default function LogIn() {
             passwordInput: {value: string}
         }
 
-        console.log("about to submit");
         let res = await signIn("credentials", {
             username: formElements.usernameInput.value,
             password: formElements.passwordInput.value,
