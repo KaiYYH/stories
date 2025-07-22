@@ -29,6 +29,12 @@ export default function DisplayStory(props: Props) {
         getPosts();
       }, [numPosts]);
 
+    let authors = [] // array of authors of posts in story
+    for (let post of posts) {
+        authors.push(post.userId);
+    }
+    console.log(authors);
+
     // batch request by sending array to backend to get dictionary of usernames and then passing that into the storyposts
 
     function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
