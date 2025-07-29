@@ -1,2 +1,5 @@
 class-list.json
 pid
+package-lock.json
+.vscode/
+pnpm-lock.yaml
