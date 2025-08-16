@@ -39,6 +39,23 @@ export default function SignUp() {
         });
     }
 
+    function validatePassword(password: string) {
+        let errorMsg = ""
+        if (password.length < 8) {
+            errorMsg += "Password must be at least 8 characters."
+        }
+        if (password.toUpperCase() != password) {
+            errorMsg += "Password must contain a lowercase letter."
+        }
+        if (password.toLowerCase() != password) {
+            errorMsg += "Password must contain an uppercase letter."
+        }
+        if (!/\d/.test(password)) {
+            errorMsg += "Password must contain a number."
+        }
+        setErrorMessage(errorMsg);
+    }
+
     return (
         <div className="grid items-start justify-items-center min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
           <main className="grid items-center sm:items-start">
