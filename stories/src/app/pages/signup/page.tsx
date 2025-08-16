@@ -57,6 +57,9 @@ export default function SignUp() {
         if (password.length < 8) {
             errorMsg += "Password must be at least 8 characters.\n"
         }
+        if (password.replace(/[^a-z]/gi, '').length == 0) {
+            errorMsg += "Password must contain a letter.\n"
+        }
         if (password.replace(/[^a-z]/gi, '').toUpperCase() == password) {
             errorMsg += "Password must contain a lowercase letter.\n"
         }
@@ -66,6 +69,7 @@ export default function SignUp() {
         if (!/\d/.test(password)) {
             errorMsg += "Password must contain a number.\n"
         }
+        console.log(errorMsg);
         setErrorMessage(errorMsg);
         return errorMsg.length === 0;
     }
