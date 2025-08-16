@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { ErrorCode } from "@/app/utils/errorCodes";
 
 export default function SignUp() {
 
@@ -26,12 +27,21 @@ export default function SignUp() {
                 Password: formElements.passwordInput.value,
             }),
         })
-        .then(response => {
+        .then(async response => {
             if (response.ok) {
                 router.push('/');
             }
             else {
-                setErrorMessage("You are being problematic :/ Please try again later.")
+                await response.json().then(error => {
+                    if (error.message == ErrorCode.UsernameTaken)
+                    {
+                        setErrorMessage("This username has already been taken. Please choose another.")
+                    }
+                    else 
+                    {
+                        setErrorMessage("You are being problematic :/ Please try again later.")
+                    }
+                });
             }
         })
         .catch(e => {
