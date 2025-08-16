@@ -60,10 +60,10 @@ export default function SignUp() {
         if (password.replace(/[^a-z]/gi, '').length == 0) {
             errorMsg += "Password must contain a letter.\n"
         }
-        if (password.replace(/[^a-z]/gi, '').toUpperCase() == password) {
+        if (password.toUpperCase() == password) {
             errorMsg += "Password must contain a lowercase letter.\n"
         }
-        if (password.replace(/[^a-z]/gi, '').toLowerCase() == password) {
+        if (password.toLowerCase() == password) {
             errorMsg += "Password must contain an uppercase letter.\n"
         }
         if (!/\d/.test(password)) {
