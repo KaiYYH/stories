@@ -69,7 +69,6 @@ export default function SignUp() {
         if (!/\d/.test(password)) {
             errorMsg += "Password must contain a number.\n"
         }
-        console.log(errorMsg);
         setErrorMessage(errorMsg);
         return errorMsg.length === 0;
     }
