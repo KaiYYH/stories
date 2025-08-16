@@ -17,53 +17,57 @@ export default function SignUp() {
             passwordInput: {value: string}
         }
 
-        await fetch("https://localhost:7009/api/Users", {
-            method: "POST",
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                Username: formElements.usernameInput.value,
-                Password: formElements.passwordInput.value,
-            }),
-        })
-        .then(async response => {
-            if (response.ok) {
-                router.push('/');
-            }
-            else {
-                await response.json().then(error => {
-                    if (error.message == ErrorCode.UsernameTaken)
-                    {
-                        setErrorMessage("This username has already been taken. Please choose another.")
-                    }
-                    else 
-                    {
-                        setErrorMessage("You are being problematic :/ Please try again later.")
-                    }
-                });
-            }
-        })
-        .catch(e => {
-            console.log(e);
-        });
+        if (validatePassword(formElements.passwordInput.value)) {
+
+            await fetch("https://localhost:7009/api/Users", {
+                method: "POST",
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    Username: formElements.usernameInput.value,
+                    Password: formElements.passwordInput.value,
+                }),
+            })
+            .then(async response => {
+                if (response.ok) {
+                    router.push('/');
+                }
+                else {
+                    await response.json().then(error => {
+                        if (error.message == ErrorCode.UsernameTaken)
+                        {
+                            setErrorMessage("This username has already been taken. Please choose another.")
+                        }
+                        else 
+                        {
+                            setErrorMessage("You are being problematic :/ Please try again later.")
+                        }
+                    });
+                }
+            })
+            .catch(e => {
+                console.log(e);
+            });
+        }
     }
 
     function validatePassword(password: string) {
         let errorMsg = ""
         if (password.length < 8) {
-            errorMsg += "Password must be at least 8 characters."
+            errorMsg += "Password must be at least 8 characters.\n"
         }
-        if (password.toUpperCase() != password) {
-            errorMsg += "Password must contain a lowercase letter."
+        if (password.replace(/[^a-z]/gi, '').toUpperCase() == password) {
+            errorMsg += "Password must contain a lowercase letter.\n"
         }
-        if (password.toLowerCase() != password) {
-            errorMsg += "Password must contain an uppercase letter."
+        if (password.replace(/[^a-z]/gi, '').toLowerCase() == password) {
+            errorMsg += "Password must contain an uppercase letter.\n"
         }
         if (!/\d/.test(password)) {
-            errorMsg += "Password must contain a number."
+            errorMsg += "Password must contain a number.\n"
         }
         setErrorMessage(errorMsg);
+        return errorMsg.length === 0;
     }
 
     return (
@@ -84,7 +88,7 @@ export default function SignUp() {
               </div>
             </div>
             {errorMessage && 
-                <div className="text-red-600 text-sm mt-2">{errorMessage}</div>
+                <div className="text-red-600 text-sm mt-2 whitespace-pre-line">{errorMessage}</div>
             }
           </main>
         </div>
