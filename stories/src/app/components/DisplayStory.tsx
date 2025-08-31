@@ -19,12 +19,37 @@ export default function DisplayStory(props: Props) {
     
     useEffect(() => {
         const getPosts = async () => {
-            await fetch(`https://localhost:7009/api/Stories/${props.storyId}/Posts`)
+            // get posts
+            let posts = await fetch(`https://localhost:7009/api/Stories/${props.storyId}/Posts`)
             .then((response) => response.json())
             .then(data => {
-            setPosts(data);
+                return data;
             })
             .catch(error => console.log(error));
+
+            // get authors
+            let ids = posts.map((post: Post) => post.userId)
+            let authors = await fetch("https://localhost:7009/api/Users/multiget", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ids: ids
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                return data.users;
+            })
+            .catch(e => {console.log(e)});
+
+            // map authors to posts
+            for (let post of posts) {
+                post.author = authors[post.userId].username
+            }
+
+            setPosts(posts);
         }
         getPosts();
       }, [numPosts]);
