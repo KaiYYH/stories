@@ -85,11 +85,11 @@ export default function SignUp() {
                 <form onSubmit={handleSubmit}>
                     <div className="grid grid-cols-[35%_62%] gap-3">
                         <div className=""><label>Username: </label></div>
-                        <div className=""><input type="text" maxLength={45} id="usernameInput" required className="float-right bg-gray-200 rounded-md w-64 p-1" /></div>
+                        <div className=""><input type="text" maxLength={15} id="usernameInput" required className="float-right bg-gray-200 rounded-md w-64 p-1" /></div>
                         <div className=""><label>Password: </label></div>
-                        <div className=""><input type="password" maxLength={45} id="passwordInput1" className="float-right bg-gray-200 rounded-md w-64 p-1" /></div>
+                        <div className=""><input type="password" maxLength={15} id="passwordInput1" className="float-right bg-gray-200 rounded-md w-64 p-1" /></div>
                         <div className=""><label>Retype Password: </label></div>
-                        <div className=""><input type="password" maxLength={45} id="passwordInput2" className="float-right bg-gray-200 rounded-md w-64 p-1" /></div>
+                        <div className=""><input type="password" maxLength={15} id="passwordInput2" className="float-right bg-gray-200 rounded-md w-64 p-1" /></div>
                         <div className=""></div>
                         <div className=""><input type="submit" value="Submit" className="float-right p-3 rounded-full border border-solid border-transparent transition-colors bg-foreground text-background hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"/></div>
                     </div>
