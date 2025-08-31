@@ -46,7 +46,7 @@ export default function DisplayStory(props: Props) {
 
             // map authors to posts
             for (let post of posts) {
-                post.author = authors[post.userId].username
+                post.authorName = authors[post.userId].username
             }
 
             setPosts(posts);
@@ -148,7 +148,7 @@ export default function DisplayStory(props: Props) {
                 {posts && posts.map((item) => (
                     <StoryPost
                         content={item.content}
-                        author={item.author}
+                        author={item.authorName}
                         date={new Date(item.date)}
                         key={item.postId}
                     />
