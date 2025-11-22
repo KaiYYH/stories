@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Post } from "../models/Post";
 import EditStoryModal from "./EditStoryModal";
 import { Tooltip } from "flowbite-react";
+import { useSession } from "next-auth/react";
 
 interface Props {
     name: string,
@@ -16,6 +17,7 @@ interface Props {
 export default function DisplayStory(props: Props) {
     const [posts, setPosts] = useState<Post[]>([]);
     const [numPosts, setNumPosts] = useState(0);
+    const { data: session } = useSession();
     
     useEffect(() => {
         const getPosts = async () => {
@@ -59,13 +61,13 @@ export default function DisplayStory(props: Props) {
         const form = event.currentTarget
         const formElements = form.elements as typeof form.elements & {
             content: {value: string}
-            author: {value:string}
         }
-        createPost(formElements.content.value, formElements.author.value);
+        createPost(formElements.content.value);
     }
 
-    async function createPost(content: string, author: string) {
+    async function createPost(content: string) {
         let date = new Date();
+        let author = session?.user?.id;
         await fetch("https://localhost:7009/api/Posts", {
             method: "POST",
             headers: {
@@ -73,7 +75,7 @@ export default function DisplayStory(props: Props) {
             },
             body: JSON.stringify({
                 content: content,
-                author: author,
+                userId: author,
                 date: date,
                 storyId: props.storyId
             }),
@@ -153,12 +155,10 @@ export default function DisplayStory(props: Props) {
                         key={item.postId}
                     />
                 ))}
-                <form className="border p-3" onSubmit={handleSubmit} key={numPosts}>
-                    <label className="mr-3">Name: </label>
-                    <input type="text" maxLength={30} id="author" required className="bg-inherit rounded-md w-64 p-1 border mb-3" />
+                {session && <form className="border p-3" onSubmit={handleSubmit} key={numPosts}>
                     <textarea className="p-3 w-full bg-inherit border border-solid" name="content" placeholder="Write your post here..."/>
                     <button className="rounded-full border border-solid border-transparent transition-colors bg-foreground text-background hover:bg-[#383838] dark:hover:bg-[#ccc] p-2 float-right" type="submit">Post</button>
-                </form>
+                </form>}
             </div>
         </div>
     )

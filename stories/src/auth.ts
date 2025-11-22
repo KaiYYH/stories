@@ -30,7 +30,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 });
 
                 if (user) {
-                    return user;
+                    const userInfo = {
+                        id: user.userId, 
+                        name: user.username, 
+                    }
+                    return userInfo;
                 }
                 else {
                     return null;
@@ -38,4 +42,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             },
         })
     ],
+    callbacks: {
+        async session( {session, token} ) {
+            session.user.id = token.sub ?? "";
+            return session;
+        },
+    }
 })
