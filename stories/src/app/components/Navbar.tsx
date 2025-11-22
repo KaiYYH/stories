@@ -3,6 +3,7 @@
 import NavBarLink from "./NavBarLink";
 import { useSession, signOut } from "next-auth/react";
 import Button from "./general/Button";
+import { Dropdown } from "./general/Dropdown";
 
 export default function NavBar() {
   const { data: session } = useSession();
@@ -51,12 +52,21 @@ export default function NavBar() {
                     key={item.page}
                 />
             ))}
-            {session && <Button 
-              text="Sign Out" 
-              onClick={async () => {
-                await signOut();
-              }}>
-            </Button>}
+            {session && <Dropdown
+              title="Dropdown"
+            >
+              <NavBarLink
+                pageName="Account"
+                path="/pages/"
+              />
+              <NavBarLink
+                pageName="Sign Out"
+                path="/pages/"
+                onClick={async () => {
+                  await signOut();
+                }}
+              />
+            </Dropdown>}
         </div>
     </div>
   );
